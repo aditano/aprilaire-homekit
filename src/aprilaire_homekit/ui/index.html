@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AprilAire Home</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f6b45'/%3E%3Cpath d='M8 18.5 16 10l8 8.5V24H8z' fill='%23fffdf8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="mark" aria-hidden="true"></div>
+      <p class="eyebrow">AprilAire Home</p>
+      <h1 id="title">Find your thermostat</h1>
+      <p id="lede">This computer looks for an AprilAire thermostat on your Wi-Fi and adds it to the Apple Home app. Nothing is sent to a server.</p>
+    </header>
+
+    <p id="banner" class="banner" hidden></p>
+
+    <section id="finder">
+      <div class="card">
+        <div class="row">
+          <div>
+            <h2>On this network</h2>
+            <p id="scan-copy" class="muted">Looking for thermostats…</p>
+          </div>
+          <button id="scan" class="secondary" type="button">Scan again</button>
+        </div>
+        <div class="track" aria-hidden="true"><div id="bar"></div></div>
+        <div id="devices" class="devices"></div>
+        <p id="empty" class="help" hidden></p>
+      </div>
+
+      <form id="manual" class="card manual">
+        <h2>Or enter the IP address</h2>
+        <p class="muted">Use this if the scan does not see the thermostat. The address is on your router’s device list, often named AprilAire.</p>
+        <label>IP address
+          <input id="manual-host" name="host" inputmode="decimal" autocomplete="off" placeholder="192.168.1.50" required>
+        </label>
+        <details>
+          <summary>Different port</summary>
+          <label>Port
+            <input id="manual-port" name="port" inputmode="numeric" value="8000">
+          </label>
+        </details>
+        <button type="submit">Connect</button>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="stats">
+        <article class="card temp-card">
+          <p class="muted" id="model">Thermostat</p>
+          <p id="temp" class="temp">—</p>
+          <p id="mode" class="mode">Waiting for the thermostat</p>
+        </article>
+        <article class="card">
+          <h2>Thermostat</h2>
+          <p id="thermo-state" class="pill">Not connected</p>
+          <p id="thermo-detail" class="muted"></p>
+        </article>
+        <article class="card">
+          <h2>Apple Home</h2>
+          <p id="home-state" class="pill">Not paired</p>
+          <p id="home-detail" class="muted"></p>
+        </article>
+      </div>
+
+      <section id="pair" class="card pair"></section>
+
+      <div class="card controls">
+        <button id="toggle-bridge" type="button">Start bridge</button>
+        <label class="switch">
+          <input id="autostart" type="checkbox">
+          <span>Start AprilAire Home when I log in</span>
+        </label>
+        <div class="split">
+          <label>Name in the Home app
+            <input id="accessory-name" maxlength="32" autocomplete="off">
+          </label>
+          <div class="units" role="group" aria-label="Temperature unit">
+            <button id="unit-f" type="button">°F</button>
+            <button id="unit-c" type="button">°C</button>
+          </div>
+        </div>
+      </div>
+
+      <details class="card trouble">
+        <summary>Troubleshooting</summary>
+        <ol>
+          <li>On the thermostat, hold <strong>Contractor Info</strong> for about 10 seconds.</li>
+          <li>Set <strong>Automation Enable</strong> to <strong>Automation System</strong>, not Aprilaire Cloud. The 8920W installation manual does not list this setting. If you do not see it, this app cannot control that panel.</li>
+          <li>Give the thermostat a reserved IP address in your router so it does not move.</li>
+          <li>Quit any other AprilAire automation connection, including Home Assistant. The panel allows only one.</li>
+          <li>If the panel freezes, switch its breaker off for 30 seconds, then on.</li>
+        </ol>
+        <p id="log-path" class="muted"></p>
+        <div class="row">
+          <button id="forget" class="secondary" type="button">Choose a different thermostat</button>
+          <button id="reset" class="secondary" type="button">Reset HomeKit pairing</button>
+          <button id="quit" class="secondary" type="button">Quit AprilAire Home</button>
+        </div>
+      </details>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
