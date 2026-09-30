@@ -1,0 +1,12 @@
+# Optional advanced config. The desktop app writes JSON in its data folder
+# and does not need this file. Pass it with: aprilaire-homekit --config config.yaml
+
+thermostat:
+  host: 192.168.1.50
+  port: 8000
+
+homekit:
+  name: AprilAire
+  port: 51826
+  # pin: "482-19-736"
+  display_unit: F

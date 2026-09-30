@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aprilaire-homekit"
+version = "0.1.0"
+description = "Local desktop bridge from an AprilAire thermostat to Apple Home"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Anthony DiTano" }]
+dependencies = [
+  "HAP-python>=4.9,<6",
+  "PyYAML>=6",
+  "base36>=0.1.1",
+  "psutil>=5.9",
+  "pyaprilaire==0.8.1",
+  "pyqrcode>=1.2.1",
+  "pywebview>=5.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+aprilaire-homekit = "aprilaire_homekit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+aprilaire_homekit = ["ui/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
