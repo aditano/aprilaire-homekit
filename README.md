@@ -84,6 +84,7 @@ Fan-only, schedules, dehumidify, and fresh air are not on the Home tile.
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -e ".[dev]"
+.venv/bin/ruff check src tests
 .venv/bin/pytest
 .venv/bin/aprilaire-homekit
 ```
@@ -92,4 +93,4 @@ python3 -m venv .venv
 
 ## License
 
-MIT. See [LICENSE](LICENSE). Protocol behavior comes from [pyaprilaire](https://github.com/chamberlain2007/pyaprilaire) and the public AprilAire automation description. See [RESEARCH.md](RESEARCH.md).
+Copyright 2026 Anthony DiTano. Licensed under GPL-3.0-or-later. See [LICENSE](LICENSE). Protocol behavior comes from [pyaprilaire](https://github.com/chamberlain2007/pyaprilaire) and the public AprilAire automation description. See [RESEARCH.md](RESEARCH.md).

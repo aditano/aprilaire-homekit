@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Local desktop bridge from an AprilAire thermostat to Apple Home"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = { text = "GPL-3.0-or-later" }
 authors = [{ name = "Anthony DiTano" }]
 dependencies = [
   "HAP-python>=4.9,<6",
@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "ruff>=0.16"]
 
 [project.scripts]
 aprilaire-homekit = "aprilaire_homekit.cli:main"
@@ -35,3 +35,13 @@ aprilaire_homekit = ["ui/*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+# These hits are existing style, not defects. Broad handlers stay in place
+# so a desktop process and the test peer keep their current error paths.
+ignore = ["BLE001", "I001", "RUF100", "S110", "SIM103"]
